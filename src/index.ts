@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express'
 import cors from 'cors'
 import { db } from './database/knex'
-import { TuserDB } from './types'
+import { TuserDB, TpurchaseDB, TproductsDB, TpucharseProductsDB } from './types'
 
 
 const app = express()
@@ -95,7 +95,7 @@ app.post("/users", async (req: Request, res: Response) => {
         }
 
 
-        const newUser: TuserDB = {
+        const newUser = {
             id,
             name,
             email,
