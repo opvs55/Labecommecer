@@ -1,6 +1,5 @@
 # toDoBackEnd
 
-return final via postman
 
 <img src="https://i.imgur.com/aa19SZ2.png" />
 
