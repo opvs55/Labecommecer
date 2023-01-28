@@ -496,7 +496,9 @@ app.delete("/purchases/:id", async (req: Request, res: Response) => {
 app.get("/users/purchases/products", async (req: Request, res: Response) => {
     try {
 
-        const purchases:TpurchaseDB[] = await db("purchases")
+        const purchases: TpurchaseDB[] = await db("purchases")
+        .select("purchases.*", "users.name", "users.email")
+        .innerJoin("users", "users.id", "=", "purchases.buyer")
         const result = []
 
         for (let purchase of purchases){
@@ -506,6 +508,14 @@ app.get("/users/purchases/products", async (req: Request, res: Response) => {
 
             for(let product of purchase_produtc){
                 const [item]:TproductsDB[] = await db("products")
+                .select(
+                    "id as productID",
+                    "name as ProductName",
+                    "price",
+                    "description",
+                    "image_url",
+                    "quantify"
+                )
                 .innerJoin("purchases_products", "purchases_products.product_id", "=", "products.id")
                 .where({id: product.product_id})
                 cart.push(item)
