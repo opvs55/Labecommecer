@@ -497,7 +497,15 @@ app.get("/users/purchases/products", async (req: Request, res: Response) => {
     try {
 
         const purchases: TpurchaseDB[] = await db("purchases")
-        .select("purchases.*", "users.name", "users.email")
+        .select( 
+            "purchases.id", 
+            "purchases.buyer",
+            "users.name",
+            "users.email",
+            "purchases.total_price",
+            "purchases.created_at",
+            "purchases.paid" 
+            )
         .innerJoin("users", "users.id", "=", "purchases.buyer")
         const result = []
 
