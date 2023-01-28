@@ -31,6 +31,7 @@ CREATE TABLE purchases_products (
 );
 
 
+
 INSERT INTO users (id, name, email, password)
 VALUES
 	("f001", "Maria Silva", "MariaSilva@email.com", "1234123"),
@@ -77,3 +78,5 @@ SELECT * FROM users;
 SELECT * FROM products;
 SELECT * FROM purchases_products;
 SELECT * FROM purchases;
+
+DROP TABLE purchases;

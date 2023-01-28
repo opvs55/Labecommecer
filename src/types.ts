@@ -9,7 +9,7 @@ export type TuserDB = {
 export type TpurchaseDB = {
     id: string,
     buyer: string,
-    total_price: string,
+    total_price: number,
     created_at: string,
     paid: number
 }
@@ -27,4 +27,16 @@ export type TpucharseProductsDB = {
     purchase_id: string,
     product_id: string,
     quantify: number
+}
+
+
+
+export type TUsersPurchaseProductsDB = {
+    purchase_id: string,
+    buyer:string,
+    name:string,
+    email:string,
+    total_price:number,
+    created_at: string,
+    cart: TproductsDB[]
 }
